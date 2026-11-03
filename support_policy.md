@@ -3,7 +3,6 @@
 **Vendor:** TheOpsLabs  
 **Product:** Gatekeeper for Jira  
 **Effective Date:** October 16, 2026  
-**Website:** https://theopslabs.com  
 **Support Email:** support@theopslabs.com  
 
 ---
