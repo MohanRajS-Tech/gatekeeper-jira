@@ -3,13 +3,16 @@
 **Vendor:** TheOpsLabs  
 **Product:** Gatekeeper for Jira  
 **Effective Date:** October 16, 2026  
+**Last Updated:** November 4, 2026  
+**Documentation & Repository:** https://github.com/MohanRajS-Tech/gatekeeper-jira  
 **Support Email:** support@theopslabs.com  
 
 ---
 
 ## 1. Hours of Operation
-* **Standard Business Hours:** Monday through Friday, 09:00 – 17:00 IST (UTC+05:30).
-* **Exclusions:** Weekends (Saturday and Sunday) and Indian national holidays. Support inquiries received outside business hours will be queued for the next immediate business day.
+* **Standard Business Hours:** Monday through Friday, 09:00 – 17:00 IST (UTC+05:30) for L2 and L3 requests.
+* **Critical Incident Coverage:** 24/7 calendar monitoring for Critical (L1) workflow blockers.
+* **Exclusions:** Major Indian national holidays apply to standard non-critical requests. Inquiries received outside business hours will be queued for the next business day.
 
 ---
 
