@@ -1,6 +1,9 @@
 # Terms of Service for Gatekeeper for Jira
 
-**Effective Date:** October 16, 2026
+**Vendor / Provider:** TheOpsLabs (Operated by Mohan Raj S)  
+**Effective Date:** October 16, 2026  
+**Last Updated:** November 4, 2026  
+**Contact:** support@theopslabs.com  
 
 ## 1. Acceptance of Terms
 By installing or using Gatekeeper for Jira ("the App") from the Atlassian Marketplace, you and the organization you represent ("Customer", "You") agree to be bound by these Terms of Service. If you do not agree, do not install or use the App.
@@ -26,5 +29,5 @@ You may terminate these terms at any time by uninstalling the App from your Atla
 We may update these Terms from time to time. Continued use of the App following any notice or publication of updated terms constitutes acceptance.
 
 ## 8. Governing Law & Contact
-These Terms are governed by applicable laws without regard to conflict of law principles.
-* **Inquiries:** Contact support via the Atlassian Marketplace vendor profile.
+These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law principles. Any dispute arising out of or relating to these Terms shall be subject to the exclusive jurisdiction of the competent courts in Chennai, Tamil Nadu, India.
+* **Support & Legal Inquiries:** Contact support directly at `support@theopslabs.com` or via the official Atlassian Marketplace vendor profile.
