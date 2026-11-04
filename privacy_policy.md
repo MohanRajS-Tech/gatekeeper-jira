@@ -1,7 +1,7 @@
 # Privacy Policy for Gatekeeper for Jira
 
 **Effective Date:** October 16, 2026  
-**Last Updated:** October 16, 2026
+**Last Updated:** November 4, 2026
 
 ## 1. Overview
 Gatekeeper for Jira ("the App") is developed as an Atlassian Forge application designed to validate Definition of Done and checklist items in Jira issue descriptions. 
@@ -28,6 +28,8 @@ We do not sell, rent, trade, or share any data with third parties. No data leave
 * **Data Residency:** All data remains strictly within the data residency boundary configured on your Atlassian Cloud organization.
 
 ## 6. Contact & Data Protection Inquiries
-For questions regarding this policy or technical inquiries:
-* **Developer Contact:** mohanrajs (Atlassian Developer Space)
-* **Email:** support@gatekeeperjira.com (or via Marketplace vendor support portal)
+For questions regarding this policy or data protection inquiries:
+* **Vendor:** TheOpsLabs
+* **Developer Contact:** Mohan Raj S (Atlassian Developer Space)
+* **Support & Security Contact:** support@theopslabs.com
+* **Project Documentation & Repository:** https://github.com/MohanRajS-Tech/gatekeeper-jira
