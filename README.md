@@ -1,17 +1,18 @@
 # Gatekeeper: DoD & Checklist Validator for Jira
+# Gatekeeper: Definition of Done & Checklist Validator for Jira
 
-> **Enforce Definition of Done and Acceptance Criteria on native Jira issue descriptions with zero bloat and zero custom scripts.**
+> **Enforce Definition of Done and acceptance criteria on native Jira issue descriptions with zero bloat and zero custom scripts.**
 
 ---
 
 ## Overview
 
-**Gatekeeper for Jira** adds an automated Quality Gate to any Jira Cloud workflow. It parses native markdown checkboxes (`- [ ]`, `• [ ]`, `* [ ]`) and rich-text checklists in the issue description and blocks status transitions (e.g., moving to *Done* or *Ready for QA*) until all required items are marked complete (`[x]`).
+**Gatekeeper for Jira** adds an automated Quality Gate to any Jira Cloud workflow. It parses native markdown checkboxes (`- [ ]`, `• [ ]`, `* [ ]`) in the issue description and synchronously blocks status transitions (e.g., moving to *Done* or *Resolved*) until every single checklist item is marked complete (`[x]`).
 
 ### Why Gatekeeper?
-* **Zero UI Clutter:** Works directly with Jira's native description editor. No heavy third-party panels, custom tables, or extra database fields.
-* **Serverless Execution:** Runs 100% inside the **Atlassian Forge** hosted runtime with zero cold-start latency.
-* **Enterprise Security Ready:** Zero data egress, zero database storage, and strictly read-only permissions (`read:jira-work`).
+* **Zero UI Clutter:** Works directly with Jira's native description editor. No heavy third-party panels, custom tables, or extra fields.
+* **0ms Latency:** Evaluates in-memory directly within Jira Cloud using native Jira Expressions. Zero cold-start latency.
+* **Enterprise Security Ready:** Built 100% on the **Atlassian Forge** platform. Zero data egress, zero database storage, and strictly read-only permissions (`read:jira-work`).
 
 ---
 
@@ -20,38 +21,28 @@
 To enforce Definition of Done validation on any Jira workflow transition:
 
 1. **Open Workflow Settings:**
-   * Go to **Project Settings** → **Workflows** (or **Jira Settings** ⚙️ → **Issues** → **Workflows**).
-   * Click the **Pencil (Edit)** icon on the workflow you want to protect.
+   * Go to **Jira Settings** (cog icon) $\rightarrow$ **Issues** $\rightarrow$ **Workflows**.
+   * Locate the workflow you want to protect (e.g., *Software Development Workflow* or *Service Request Workflow*) and click **Edit**.
 
 2. **Add Gatekeeper Validator:**
-   * Click on the transition arrow entering your completion status (e.g., **Done**, **Resolved**, or **Ready for QA**).
-   * In the right-hand panel, click **Validators** → **Add validator**.
-   * Select **Gatekeeper Definition of Done Validator** and click **Add**.
+   * Click on the transition arrow entering your final status (e.g., transition to **Done** or **Resolved**).
+   * In the properties panel on the right, click **Validators**.
+   * Click **Add validator**.
+   * Select **Gatekeeper Definition of Done Validator** from the list and click **Add**.
 
 3. **Publish Workflow Draft:**
    * Click **Publish Draft** at the top of the workflow editor.
-   * Confirm **Publish**.
+   * Select whether to save a backup of the previous workflow, then confirm **Publish**.
 
----
-
-## How to Use: Section Scoping
-
-To prevent arbitrary notes or backlog ideas from blocking your ticket, group your release checks under an explicit heading:
-
-```markdown
-## Definition of Done
-- [x] Unit tests passing (>85% coverage)
-- [x] Code reviewed and approved
-- [ ] Staging verification complete
-```
-
-* **Inside the DoD Section:** Incomplete items (`- [ ]`) block the transition and alert the user with the exact pending item names.
-* **Outside the DoD Section:** Checkboxes under other headings (e.g., `## Notes` or `## Out of Scope`) are **completely ignored**.
-* **Flexible Syntax:** Works with `## Definition of Done`, `**Definition of Done:**`, `## Acceptance Criteria`, or `## DoD`.
+> [!TIP]
+> **Working in your sprint?**  
+> If Gatekeeper helped your team enforce Definition of Done, support this free, zero-egress utility with a 10-second review on [Atlassian Marketplace](https://marketplace.atlassian.com/apps/415931997?tab=reviews&hosting=cloud).
 
 ---
 
 ## Supported Checklist Syntax
+
+Gatekeeper natively recognizes standard markdown and Jira rich-text checkbox formats:
 
 | Format | Unchecked (Blocked) | Checked (Allowed) |
 | :--- | :--- | :--- |
@@ -59,23 +50,15 @@ To prevent arbitrary notes or backlog ideas from blocking your ticket, group you
 | **Jira Bullet Checkbox** | `• [ ] Pending task` | `• [x] Completed task` |
 | **Asterisk Markdown** | `* [ ] Pending task` | `* [x] Completed task` |
 | **Numbered Checkbox** | `1. [ ] Pending task` | `1. [x] Completed task` |
-| **Native Jira Checkbox** | Native ADF interactive checkbox | Native ADF checked box |
-
----
-
-## Smart Guardrails Built-In
-
-* **Code Block Immunity:** Fenced code snippets (```` ```...``` ````), inline code (`` `[ ]` ``), and JSON arrays in bug reports are ignored.
-* **Sub-task Exemption:** Informal sub-tasks without a `## Definition of Done` heading pass automatically to prevent daily workflow friction.
-* **Terminal Resolution Bypass:** Transitions to *Cancelled*, *Won't Do*, *Duplicate*, or *Rejected* bypass validation so tickets never become trapped.
+| **Tight Markdown** | `-[ ] Pending task` | `-[x] Completed task` |
 
 ---
 
 ## Security & Architecture
 
-* **Zero Data Egress:** Gatekeeper does not send or forward any Jira data to external servers or third-party cloud infrastructure.
-* **No Database Storage:** No issue data, user information, or checklist items are stored or logged. Validation occurs in-memory during transition evaluation.
-* **Least Privilege:** Requests only `read:jira-work` strictly necessary to inspect `issue.description`.
+* **Zero External Data Egress:** Gatekeeper does not send or forward any Jira data to external servers or third-party cloud infrastructure.
+* **No Database Storage:** No issue data, user information, or checklist items are stored or logged. Validation occurs in-memory during workflow transition evaluation.
+* **Least Privilege:** Requests only `read:jira-work` scope strictly necessary to read `issue.description`.
 
 ---
 
